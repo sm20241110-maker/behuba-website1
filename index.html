@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BeHuBa.in | We Do It</title>
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f172a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            padding: 100px 20px 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #1e3a8a, #2563eb, #3b82f6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 12px;
+            letter-spacing: 3px;
+            position: relative;
+            font-weight: 800;
+        }
+
+        header .tagline {
+            font-size: 1.5rem;
+            font-weight: 300;
+            opacity: 0.9;
+            position: relative;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        /* Navigation */
+        nav {
+            background: #020617;
+            padding: 15px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        nav a {
+            color: #93c5fd;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #60a5fa;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About */
+        .about-text {
+            text-align: center;
+            font-size: 1.15rem;
+            color: #e2e8f0;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: #1e293b;
+            padding: 35px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #334155;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            color: #93c5fd;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: #cbd5e1;
+            font-size: 1rem;
+        }
+
+        /* Founders */
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .founder-card {
+            background: #1e293b;
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #334155;
+            transition: transform 0.3s ease;
+        }
+
+        .founder-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .founder-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .founder-card h3 {
+            color: #93c5fd;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .founder-card .role {
+            color: #60a5fa;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .founder-card .email {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+
+        .founder-card .email a {
+            color: #93c5fd;
+            text-decoration: none;
+        }
+
+        .founder-card .email a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+        }
+
+        .contact-info {
+            background: #1e293b;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid #334155;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info p {
+            color: #cbd5e1;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+        }
+
+        .contact-info a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: #020617;
+            font-size: 0.9rem;
+            color: #64748b;
+            border-top: 1px solid #1e293b;
+        }
+
+        /* Chatbot Styles */
+        .chatbot-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            border: none;
+            color: #fff;
+            font-size: 1.6rem;
+            cursor: pointer;
+            box-shadow: 0 6px 25px rgba(37, 99, 235, 0.4);
+            z-index: 1000;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.6);
+        }
+
+        .chatbot-window {
+            position: fixed;
+            bottom: 100px;
+            right: 25px;
+            width: 380px;
+            max-height: 500px;
+            background: #1e293b;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            z-index: 999;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+
+        .chatbot-window.open {
+            display: flex;
+        }
+
+        .chatbot-header {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .chatbot-header button {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.3rem;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .chatbot-header button:hover {
+            opacity: 1;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            max-height: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chat-msg {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .chat-msg.bot {
+            background: #334155;
+            color: #e2e8f0;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-msg.user {
+            background: #2563eb;
+            color: #fff;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chatbot-input {
+            display: flex;
+            border-top: 1px solid #334155;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 14px 16px;
+            border: none;
+            background: #0f172a;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .chatbot-input input::placeholder {
+            color: #64748b;
+        }
+
+        .chatbot-input button {
+            padding: 14px 20px;
+            border: none;
+            background: #2563eb;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .chatbot-input button:hover {
+            background: #1d4ed8;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            header h1 { font-size: 2.5rem; }
+            header .tagline { font-size: 1.2rem; }
+            .chatbot-window {
+                width: calc(100% - 30px);
+                right: 15px;
+                bottom: 90px;
+            }
+            nav a { margin: 0 10px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header -->
+<header>
+    <h1>BeHuBa.in</h1>
+    <p class="tagline">We Do It</p>
+</header>
+
+<!-- Navigation -->
+<nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#founders">Founders</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<!-- About Section -->
+<section id="about">
+    <h2 class="section-title">About Us</h2>
+    <p class="about-text">
+        BeHuBa is built on one simple belief &mdash; execution matters.
+        From ideas to implementation, we take ownership and deliver
+        results with clarity, commitment, and creativity. We don't just plan.
+        <strong>We Do It.</strong>
+    </p>
+</section>
+
+<!-- Services Section -->
+<section id="services">
+    <h2 class="section-title">What We Do</h2>
+    <p class="section-subtitle">We bring ideas to life through technology, innovation, and relentless execution.</p>
+    <div class="services-grid">
+        <div class="card">
+            <div class="card-icon">&#128187;</div>
+            <h3>Technology</h3>
+            <p>Building secure, scalable, and modern digital solutions tailored to your needs.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">&#128161;</div>
+            <h3>Innovation</h3>
+            <p>Turning bold ideas into real-world products and services that make a difference.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon">&#9889;</div>
+            <h3>Execution</h3>
+            <p>No excuses. No delays. We do what we promise, every single time.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Founders Section -->
+<section id="founders">
+    <h2 class="section-title">Meet Our Founders</h2>
+    <p class="section-subtitle">The driving force behind BeHuBa.in</p>
+    <div class="founders-grid">
+        <div class="founder-card">
+            <div class="founder-avatar">SC</div>
+            <h3>Sahana C Y</h3>
+            <p class="role">Co-Founder</p>
+            <p class="email">&#9993; <a href="mailto:sahana20241110@gmail.com">sahana20241110@gmail.com</a></p>
+        </div>
+        <div class="founder-card">
+            <div class="founder-avatar">MB</div>
+            <h3>Manasa B M</h3>
+            <p class="role">Co-Founder</p>
+            <p class="email">&#9993; <a href="mailto:sahana20241110@gmail.com">sahana20241110@gmail.com</a></p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <p class="section-subtitle">We'd love to hear from you. Reach out to our founders below.</p>
+    <div class="contact-info">
+        <p><strong>Sahana C Y</strong> &mdash; Co-Founder</p>
+        <p><strong>Manasa B M</strong> &mdash; Co-Founder</p>
+        <p style="margin-top: 20px;">&#9993; Email: <a href="mailto:sahana20241110@gmail.com">sahana20241110@gmail.com</a></p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    &copy; 2026 BeHuBa.in | We Do It
+</footer>
+
+<!-- Chatbot Toggle Button -->
+<button class="chatbot-toggle" id="chatbotToggle" aria-label="Open chat">&#128172;</button>
+
+<!-- Chatbot Window -->
+<div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+        <h4>BeHuBa Assistant</h4>
+        <button id="chatbotClose" aria-label="Close chat">&times;</button>
+    </div>
+    <div class="chatbot-messages" id="chatbotMessages">
+        <div class="chat-msg bot">Hi there! Welcome to BeHuBa.in. How can I help you today? You can ask about our founders, contact details, or what we do.</div>
+    </div>
+    <div class="chatbot-input">
+        <input type="text" id="chatInput" placeholder="Type a message..." />
+        <button id="chatSend">&#10148;</button>
+    </div>
+</div>
+
+<script>
+(function() {
+    var toggleBtn = document.getElementById('chatbotToggle');
+    var chatWindow = document.getElementById('chatbotWindow');
+    var closeBtn = document.getElementById('chatbotClose');
+    var sendBtn = document.getElementById('chatSend');
+    var chatInput = document.getElementById('chatInput');
+    var messagesEl = document.getElementById('chatbotMessages');
+
+    toggleBtn.addEventListener('click', function() {
+        chatWindow.classList.toggle('open');
+    });
+
+    closeBtn.addEventListener('click', function() {
+        chatWindow.classList.remove('open');
+    });
+
+    sendBtn.addEventListener('click', handleSend);
+    chatInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') handleSend();
+    });
+
+    function handleSend() {
+        var text = chatInput.value.trim();
+        if (!text) return;
+        addMessage(text, 'user');
+        chatInput.value = '';
+        setTimeout(function() {
+            var reply = getReply(text);
+            addMessage(reply, 'bot');
+        }, 400);
+    }
+
+    function addMessage(text, sender) {
+        var div = document.createElement('div');
+        div.className = 'chat-msg ' + sender;
+        div.innerHTML = text;
+        messagesEl.appendChild(div);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function getReply(input) {
+        var msg = input.toLowerCase();
+
+        // Contact / reach out / email queries
+        if (msg.indexOf('contact') !== -1 || msg.indexOf('reach') !== -1 || msg.indexOf('email') !== -1 || msg.indexOf('mail') !== -1 || msg.indexOf('get in touch') !== -1 || msg.indexOf('connect') !== -1 || msg.indexOf('talk') !== -1) {
+            return 'You can reach both our founders at:<br><br>' +
+                   '<strong>Sahana C Y</strong> (Co-Founder)<br>' +
+                   '<strong>Manasa B M</strong> (Co-Founder)<br><br>' +
+                   '&#9993; Email: <a href="mailto:sahana20241110@gmail.com" style="color:#60a5fa">sahana20241110@gmail.com</a>';
+        }
+
+        // Sahana queries
+        if (msg.indexOf('sahana') !== -1) {
+            return '<strong>Sahana C Y</strong> is a Co-Founder of BeHuBa.in.<br><br>' +
+                   '&#9993; Email: <a href="mailto:sahana20241110@gmail.com" style="color:#60a5fa">sahana20241110@gmail.com</a>';
+        }
+
+        // Manasa queries
+        if (msg.indexOf('manasa') !== -1) {
+            return '<strong>Manasa B M</strong> is a Co-Founder of BeHuBa.in.<br><br>' +
+                   '&#9993; Email: <a href="mailto:sahana20241110@gmail.com" style="color:#60a5fa">sahana20241110@gmail.com</a>';
+        }
+
+        // Founders queries
+        if (msg.indexOf('founder') !== -1 || msg.indexOf('team') !== -1 || msg.indexOf('who') !== -1 || msg.indexOf('people') !== -1 || msg.indexOf('behind') !== -1) {
+            return 'BeHuBa.in was founded by:<br><br>' +
+                   '<strong>Sahana C Y</strong> &mdash; Co-Founder<br>' +
+                   '<strong>Manasa B M</strong> &mdash; Co-Founder<br><br>' +
+                   '&#9993; Email: <a href="mailto:sahana20241110@gmail.com" style="color:#60a5fa">sahana20241110@gmail.com</a>';
+        }
+
+        // About / what queries
+        if (msg.indexOf('about') !== -1 || msg.indexOf('what') !== -1 || msg.indexOf('do') !== -1 || msg.indexOf('service') !== -1 || msg.indexOf('offer') !== -1) {
+            return 'BeHuBa.in is built on one simple belief &mdash; <strong>execution matters</strong>. We specialize in Technology, Innovation, and Execution. Our tagline says it all: <strong>We Do It.</strong>';
+        }
+
+        // Greetings
+        if (msg.indexOf('hi') !== -1 || msg.indexOf('hello') !== -1 || msg.indexOf('hey') !== -1 || msg.indexOf('good') !== -1) {
+            return 'Hello! Welcome to BeHuBa.in. Feel free to ask me about our founders, contact details, or what we do!';
+        }
+
+        // Help
+        if (msg.indexOf('help') !== -1) {
+            return 'I can help you with:<br>&#8226; Contact details of our founders<br>&#8226; Information about BeHuBa<br>&#8226; Our services<br><br>Just ask away!';
+        }
+
+        // Thanks
+        if (msg.indexOf('thank') !== -1 || msg.indexOf('thanks') !== -1) {
+            return 'You\'re welcome! If you need anything else, feel free to ask.';
+        }
+
+        // Default
+        return 'Thanks for your message! If you\'d like to reach out to our team, you can contact our founders <strong>Sahana C Y</strong> and <strong>Manasa B M</strong> at <a href="mailto:sahana20241110@gmail.com" style="color:#60a5fa">sahana20241110@gmail.com</a>. You can also ask me about our services!';
+    }
+})();
+</script>
+
+</body>
+</html>
